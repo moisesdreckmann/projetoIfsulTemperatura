@@ -3,17 +3,22 @@ import './App.css';
 
 import Logar from './pages/Logar.jsx';
 import Cadastro from './pages/Cadastro.jsx';
+import Dashboard from './pages/Dashboard.jsx';
+import userContext from './contexts/userContext.js';
 
 function App() {
   return (
-    <Router>
-      <main>
-        <Routes>
-            <Route path="/projetoIfsulTemperatura/" index element={<Logar />} />
-            <Route path="/projetoIfsulTemperatura/cadastrar" element={<Cadastro />} />
-        </Routes>
-      </main>
-    </Router>
+    <userContext.Provider value={{user: '123'}}>
+      <Router>
+        <main>
+          <Routes>
+              <Route path="/projetoIfsulTemperatura/" index element={<Logar />} />
+              <Route path="/projetoIfsulTemperatura/cadastrar" element={<Cadastro />} />
+              <Route path="/projetoIfsulTemperatura/dashboard" element={<Dashboard />} />
+          </Routes>
+        </main>
+      </Router>
+    </userContext.Provider>
   );
 }
 

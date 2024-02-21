@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 
-const Input = forwardRef(({ type, placeholder, maxLength, name, ...rest }, ref) => {
+const Input = forwardRef(({ type, placeholder, maxLength, name, value, onChange, ...rest }, ref) => {
     return (
         <input
             type={type}
@@ -8,6 +8,8 @@ const Input = forwardRef(({ type, placeholder, maxLength, name, ...rest }, ref) 
             maxLength={maxLength}
             name={name}
             ref={ref} 
+            value={value}
+            onChange={onChange}
             {...rest} 
         />
     );

@@ -38,7 +38,7 @@ main {
   align-items: center;
   background-color: var(--color2);
   width: 300px;
-  height: 420px;
+  height: 430px;
   border-radius: 4px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.308);
   position: relative;
@@ -144,3 +144,4 @@ input {
 .divEspaco {
   height: 50px;
 }
+

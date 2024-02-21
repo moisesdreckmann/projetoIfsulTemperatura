@@ -4,6 +4,7 @@ import Navbar from '../components/NavBar.jsx';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as Yup from "yup"
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
@@ -19,11 +20,14 @@ function Login() {
       resolver: yupResolver(schema)})
 
     const {errors} = formState
+    const navigate = useNavigate();
+    
 
     const handleSubmitData = (data) => {
       //console.log(data)
       //dados para serem consumidos por api
       reset()
+      navigate("/projetoIfsulTemperatura/dashboard");
       return data
     }
 
