@@ -24,7 +24,6 @@ function Login() {
       //console.log(data)
       //dados para serem consumidos por api
       reset()
-      alert('formulário enviado com sucesso!')
       return data
     }
 
@@ -46,7 +45,7 @@ function Login() {
             maxLength={10}
             name="pass"
           />
-            {errors.pass && <span className='span1'>{errors.pass.message}</span>}
+          {errors.pass && <span className='span1'>{errors.pass.message}</span>}
             
           <Button type='submit' className="btn" nome="LOGAR"/>
           <div className='divEspaco'></div>
