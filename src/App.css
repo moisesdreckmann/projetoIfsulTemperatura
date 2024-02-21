@@ -145,3 +145,66 @@ input {
   height: 50px;
 }
 
+.sectionContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.section1Dash {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 80px;
+}
+
+.section2Dash {
+  background-color: var(--color2);
+  margin-top: 30px;
+  padding-left: 50px;
+  width: 100%;
+  height: 100%;
+  padding-top: 80px;
+} 
+
+.user {
+  margin-top: 20px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+.nav2 {
+  color: white;
+  gap: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  width: 250px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav2:hover {
+  border: 1px solid white;
+}
+
+.divCentro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLogout {
+  margin-top: 10px;
+}

@@ -1,4 +1,3 @@
-import React from 'react';
 import Button from '../components/Button.jsx';
 import Input from '../components/Input.jsx';
 import Navbar from '../components/NavBar.jsx';

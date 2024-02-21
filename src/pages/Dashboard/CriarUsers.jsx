@@ -1,14 +1,13 @@
+import NavbarDash from "../../components/NavbarDash";
+import usuario from '../../assets/usuario.webp'
 import { useContext } from "react";
-import userContext from "../contexts/userContext";
-import '../App.css'
-import usuario from '../assets/usuario.webp'
-import NavbarDash from "../components/NavbarDash";
-import Logout from '../components/Logout.jsx'
+import userContext from "../../contexts/userContext";
+import '../../App.css'
+import Logout from "../../components/Logout";
 
-function Dashboard() {
+function CriarUsers() {
 
     const {user} = useContext(userContext)
-
     return(
         <main>
         <section className="sectionContainer">
@@ -19,11 +18,11 @@ function Dashboard() {
                 <Logout/>
             </div>
             <div className="section2Dash">
-                
+                <p>oi</p>
             </div>
         </section>
         </main>
     )
 }
 
-export default Dashboard
+export default CriarUsers
