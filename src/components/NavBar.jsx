@@ -16,8 +16,7 @@ function Navbar() {
             <span className="spanCadastro">
               NÃO POSSUI CONTA? 
               <Link to="/cadastro" className='navCadastro2'>REGISTRE-SE</Link>
-            </span>
-            
+            </span>  
         </div>
       ) : (
         <div className="divLogin">
