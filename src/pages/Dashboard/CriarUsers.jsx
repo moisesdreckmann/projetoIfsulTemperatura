@@ -12,7 +12,7 @@ function CriarUsers() {
         <main>
         <section className="sectionContainer">
             <div className="section1Dash">
-                <img src={usuario} alt="" width={100} height={100} />
+                <img src={usuario} alt="" width={100} height={100} className="imgDash"  />
                 <div className="user">{user}</div>
                 <div className="divCentro"><NavbarDash/></div>
                 <Logout/>
