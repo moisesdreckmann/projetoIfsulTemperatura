@@ -63,6 +63,7 @@ function Cadastro() {
                     placeholder='Password' 
                     maxLength={10}
                     name="pass"
+                    onKeyDown={validarNumeros}
                 />
                 {errors.pass && <span className='span1'>{errors.pass.message}</span>}
 

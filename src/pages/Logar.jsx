@@ -24,10 +24,18 @@ function Login({ updateUser }) {
   const handleSubmitData = (data) => {
     const { email } = data;
     const userName = email.split('@')[0];
-    updateUser(userName); // Atualiza o contexto do usuário com o nome digitado antes do arroba no email
+    updateUser(userName);
     reset();
     navigate("/projetoIfsulTemperatura/dashboard");
     return data;
+  }
+
+  const validarNumeros = (event) => {
+    if(event.keyCode  < 48 || event.keyCode  > 57){
+      if(event.key != 'Backspace') {
+        event.preventDefault() 
+      }
+    }
   }
 
   return (
@@ -47,6 +55,7 @@ function Login({ updateUser }) {
         placeholder='Password' 
         maxLength={10}
         name="pass"
+        onKeyDown={validarNumeros}
       />
       {errors.pass && <span className='span1'>{errors.pass.message}</span>}
         
