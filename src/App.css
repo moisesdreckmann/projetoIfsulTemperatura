@@ -146,12 +146,48 @@ input {
 }
 
 .sectionContainer {
-  width: 100vw;
-  height: 100vh;
+  width: 100vw !important;
+  height: 100vh !important;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
+}
+
+
+@media screen and (max-width: 700px) {
+  .sectionContainer {
+    flex-direction: column;
+  }
+
+  .section1Dash {
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 40px;
+    width: 100% !important;
+    height: 800px !important;
+    padding-bottom: 10px;
+
+  }
+
+  .btnLogout {
+    position: absolute;
+    right: 2%;
+    top: 1%;
+    z-index: 5;
+  }
+
+  .user {
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    z-index: 5;
+  }
+
+  .imgDash {
+    display: none;
+  }
+
+  
 }
 
 .section1Dash {
@@ -159,14 +195,20 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 40px;
+  height: 100%;
 }
 
 .section2Dash {
   background-color: var(--color2);
-  padding-left: 50px;
   width: 100%;
-  height: 100vh;
   padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
 } 
 
 .user {  
@@ -195,6 +237,10 @@ input {
   border: 1px solid white;
 }
 
+.imgDash {
+  margin-top: 10px;
+}
+
 .divCentro {
   display: flex;
   flex-direction: column;
@@ -203,9 +249,57 @@ input {
 }
 
 .btnLogout {
-  margin-top: 18px;
+  margin-top: 10px;
 }
 
-.imgDash {
-  margin-top: 30px;
+.formCriar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.inputsCriar {
+  width: 80%;
+  margin-bottom: 30px;
+  background-color: var(--color1);
+  color: white;
+  border-radius: 4px;
+}
+
+.divUsuarios {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 250px;
+  width: 100% !important;
+  height: 60px;
+  background-color: var(--color1);
+  margin-bottom: 30px;
+  color: white;
+  border-radius: 4px;
+  padding-inline: 10px;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 850px) {
+  .divUsuarios {
+    gap: 100px;
+    justify-content: center;
+  }
+}
+
+.btnAjustes {
+  margin-bottom: 12px;
+}
+
+@media screen and (max-width: 420px) {
+  .divUsuarios {
+    gap: 25px;
+    height: 100px;
+    justify-content: center;
+  }
 }
