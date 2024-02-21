@@ -1,8 +1,10 @@
 import Button from '../components/Button.jsx';
 import Input from '../components/Input.jsx';
+import Navbar from '../components/NavBar.jsx';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
 import * as Yup from "yup"
+
 
 function Login() {
 
@@ -27,7 +29,7 @@ function Login() {
     }
 
     return(
-        <form className='divLogar' onSubmit={handleSubmit(handleSubmitData)}>
+        <form className='divLogin' onSubmit={handleSubmit(handleSubmitData)}>
           <Input 
             {...register('email', { pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/ })} 
             type="email" 
@@ -49,6 +51,8 @@ function Login() {
             {errors.pass && <span className='span'>{errors.pass.message}</span>}
             
           <Button className="btn" nome="LOGAR"/>
+          <div className='divEspaco'></div>
+          <Navbar />
       </form>
     )
 }

@@ -1,5 +1,6 @@
 import Input from "../components/Input"
 import Button from '../components/Button.jsx';
+import Navbar from '../components/NavBar.jsx';
 
 function Cadastro() {
     return(
@@ -10,6 +11,7 @@ function Cadastro() {
                 <Input type="password" placeholder='Password' maxLength={10}/>
                 <Input type="password" placeholder='Password Confirm' maxLength={10}/>
                 <Button className="btn" nome="CADASTRAR"/>
+                <Navbar />
             </div>
         </>
     )
