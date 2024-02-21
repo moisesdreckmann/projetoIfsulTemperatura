@@ -303,3 +303,17 @@ input {
     justify-content: center;
   }
 }
+
+.react-calendar.custom-calendar {
+  background-color: var(--color1) !important;
+  border: 2px solid var(--color1);
+}
+
+.react-calendar.custom-calendar .react-calendar__tile--active {
+  background-color: var(--color1) !important;
+}
+
+.react-calendar.custom-calendar .react-calendar__tile--hover {
+  background-color: white !important;
+}
+
