@@ -1,7 +1,18 @@
-function Input({type, placeholder, maxLength}) {
-    return(
-        <input type={type} placeholder={placeholder} maxLength={maxLength} />
-    )
-}
+import { forwardRef } from 'react';
 
-export default Input
+const Input = forwardRef(({ type, placeholder, maxLength, name, ...rest }, ref) => {
+    return (
+        <input
+            type={type}
+            placeholder={placeholder}
+            maxLength={maxLength}
+            name={name}
+            ref={ref} 
+            {...rest} 
+        />
+    );
+});
+
+Input.displayName = 'Input'; // Adiciona o nome de exibição ao componente
+
+export default Input;

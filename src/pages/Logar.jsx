@@ -10,7 +10,7 @@ function Login() {
 
     const schema = Yup.object().shape({
       email: Yup.string().required('O campo email é obrigatório'),
-      pass: Yup.string().min(8,'A senha precisa ter pelo menos 8 caracteres').required('O campo senha é obrigatório'),
+      pass: Yup.string().required('O campo senha é obrigatório').min(8,'A senha precisa ter pelo menos 8 caracteres'),
     });
   
 
@@ -36,9 +36,8 @@ function Login() {
             placeholder='E-mail' 
             maxLength={27}
             name="email"
-            className={errors.email ? 'campos error' : 'campos'}
           />
-          {errors.email && <span className='span'>{errors.email.message}</span>}
+          {errors.email && <span className='span1'>{errors.email.message}</span>}
 
           <Input 
             {...register('pass', { pattern: /^.{8,}$/ })}
@@ -46,11 +45,10 @@ function Login() {
             placeholder='Password' 
             maxLength={10}
             name="pass"
-            className={errors.pass ? 'campos error' : 'campos'}
           />
-            {errors.pass && <span className='span'>{errors.pass.message}</span>}
+            {errors.pass && <span className='span1'>{errors.pass.message}</span>}
             
-          <Button className="btn" nome="LOGAR"/>
+          <Button type='submit' className="btn" nome="LOGAR"/>
           <div className='divEspaco'></div>
           <Navbar />
       </form>
