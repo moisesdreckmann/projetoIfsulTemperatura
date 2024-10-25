@@ -1,11 +1,13 @@
 import { useState } from "react";
-import NavbarDash from "../../components/NavbarDash";
-import Logout from "../../components/Logout";
+import NavbarDash from "../../components/NavbarDash.jsx";
+import Logout from "../../components/Logout.jsx";
 import { useContext } from "react";
-import userContext from "../../contexts/userContext";
+import userContext from "../../contexts/userContext.js";
 import '../../App.css';
 import usuario from '../../assets/usuario.webp'
 import Button from '../../components/Button.jsx';
+import { faList } from '@fortawesome/free-solid-svg-icons'; 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ListarUsers() {
     const usersData = [
@@ -32,7 +34,7 @@ function ListarUsers() {
             <div className="section1Dash">
                     <img src={usuario} alt="" width={100} height={100} className="imgDash"  />
                     <div className="user">{user}</div>
-                    <div className="divCentro"><NavbarDash/></div>
+                    <FontAwesomeIcon icon= {faList}/> Listar Leitos
                     <Logout/>
                 </div>
                 <div className="section2Dash">

@@ -1,11 +1,13 @@
-import NavbarDash from "../../components/NavbarDash";
+import NavbarDash from "../../components/NavbarDash.jsx";
 import usuario from '../../assets/usuario.webp'
 import { useContext } from "react";
-import userContext from "../../contexts/userContext";
+import userContext from "../../contexts/userContext.js";
 import '../../App.css'
 import Logout from "../../components/Logout.jsx";
 import Input from '../../components/Input.jsx';
 import Button from '../../components/Button.jsx';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons'; 
 
 function CriarUsers() {
 
@@ -16,7 +18,7 @@ function CriarUsers() {
                 <div className="section1Dash">
                     <img src={usuario} alt="" width={100} height={100} className="imgDash"  />
                     <div className="user">{user}</div>
-                    <div className="divCentro"><NavbarDash/></div>
+                    <FontAwesomeIcon icon={faUser} /> Criar Leitos
                     <Logout/>
                 </div>
                 <div className="section2Dash">

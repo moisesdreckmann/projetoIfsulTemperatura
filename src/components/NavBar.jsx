@@ -4,8 +4,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import '../../src/App.css';
 
 function Navbar() {
-
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <nav>
@@ -14,11 +13,19 @@ function Navbar() {
           <span className="spanCadastro">
             NÃO POSSUI CONTA? 
             <Link to="/projetoIfsulTemperatura/cadastrar" className='navCadastro2'>REGISTRE-SE</Link>
-          </span>  
+          </span>
+          <span className="spanEsqueceuSenha">
+            OU 
+            <Link to="/projetoIfsulTemperatura/esqueceu-senha" className='navCadastro2'>ESQUECEU SUA SENHA?</Link>
+          </span>
         </div>
       ) : (
         <div>
-          <span><Link to="/projetoIfsulTemperatura/"><FontAwesomeIcon icon={faArrowLeft} className='fontAwesome1Logar'/></Link></span>
+          <span>
+            <Link to="/projetoIfsulTemperatura/">
+              <FontAwesomeIcon icon={faArrowLeft} className='fontAwesome1Logar'/>
+            </Link>
+          </span>
         </div>
       )}
     </nav>

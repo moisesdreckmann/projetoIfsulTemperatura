@@ -4,12 +4,10 @@ import './App.css';
 import Logar from './pages/Logar.jsx';
 import Cadastro from './pages/Cadastro.jsx';
 import Dashboard from './pages/Dashboard.jsx';
-import userContext from './contexts/userContext.js';
-
 import CriarUsers from './pages/Dashboard/CriarUsers.jsx';
 import ListarUsers from './pages/Dashboard/ListarUsers.jsx';
-import Calendario from './pages/Dashboard/Calendarios.jsx';
-
+import Esqueceu from './pages/esqueceu-senha.jsx'; // Ensure this matches the component name
+import userContext from './contexts/userContext.js';
 
 function App() {
   const [user, setUser] = useState('');
@@ -24,12 +22,11 @@ function App() {
         <main>
           <Routes>
             <Route path="/projetoIfsulTemperatura/" element={<Logar updateUser={updateUser} />} />
-            <Route path="/projetoIfsulTemperatura/cadastrar" element={<Cadastro/>} />
+            <Route path="/projetoIfsulTemperatura/cadastrar" element={<Cadastro />} />
+            <Route path="/projetoIfsulTemperatura/esqueceu-senha" element={<Esqueceu />} /> {/* Corrected here */}
             <Route path="/projetoIfsulTemperatura/dashboard" element={<Dashboard />} />
-
             <Route path="/projetoIfsulTemperatura/criarUsers" element={<CriarUsers />} />
             <Route path="/projetoIfsulTemperatura/listarUsers" element={<ListarUsers />} />
-            <Route path="/projetoIfsulTemperatura/calendario" element={<Calendario />} />
           </Routes>
         </main>
       </Router>

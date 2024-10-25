@@ -1,87 +1,145 @@
-import Input from "../components/Input"
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Input from "../components/Input";
 import Button from '../components/Button.jsx';
 import Navbar from '../components/NavBar.jsx';
-import { useForm } from 'react-hook-form'
-import { yupResolver } from "@hookform/resolvers/yup"
-import * as Yup from "yup"
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { auth } from '../firebase';  
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 function Cadastro() {
+    const navigate = useNavigate(); 
 
-    const schema = Yup.object().shape({
-        nome: Yup.string().required('O campo nome é obrigatório.'),
-        email: Yup.string().required('O campo email é obrigatório'),
-        pass: Yup.string().required('O campo senha é obrigatório').min(8,'A senha precisa ter pelo menos 8 caracteres'),
-        ConfirmaSenha: Yup.string().required('Confirme sua senha').oneOf([Yup.ref('pass'), null], 'As senhas precisam ser iguais')
+    const validationSchema = yup.object().shape({
+        nome: yup.string().required('O campo nome é obrigatório.'),
+        email: yup.string().email('Email inválido.').required('O campo email é obrigatório.'),
+        pass: yup.string().min(8, 'A senha precisa ter pelo menos 8 caracteres.').required('O campo senha é obrigatório.'),
+        ConfirmaSenha: yup.string()
+            .oneOf([yup.ref('pass'), null], 'As senhas precisam ser iguais.')
+            .required('Confirme sua senha.'),
+        Conselho: yup.string().required('O campo Conselho é obrigatório.'),
+        Especialidade: yup.string().required('O campo Especialidade é obrigatório.'),
     });
-    
-    
-    const { register, handleSubmit, formState, reset } = useForm({
-    mode: 'onSubmit', 
-    resolver: yupResolver(schema)})
 
-    const {errors} = formState
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        resolver: yupResolver(validationSchema),
+        mode: 'onSubmit',
+    });
 
-    const handleSubmitData = (data) => {
-    //console.log(data)
-    //dados para serem consumidos por api
-    reset()
-    return data
-    }
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+    const handleSubmitData = async (data) => {
+        const { nome, email, pass } = data;
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+            await sendEmailVerification(userCredential.user);
+            reset();
+            navigate('/projetoIfsulTemperatura/');
+            alert("Usuário cadastrado com sucesso! Verifique seu email.");
+        } catch (error) {
+            alert("O email já está em uso ou houve um erro.");
+        }
+    };
 
     const validarNumeros = (event) => {
-        if(event.keyCode  < 48 || event.keyCode  > 57){
-          if(event.key != 'Backspace') {
-            event.preventDefault() 
-          }
+        if (event.keyCode < 48 || event.keyCode > 57) {
+            if (event.key !== 'Backspace') {
+                event.preventDefault();
+            }
         }
-    }
+    };
 
-    return(
+    return (
         <>
-            <form className='divLogin' onSubmit={handleSubmit(handleSubmitData)}>
-                <Input 
-                    {...register('nome')}
+            <form className='divLogin2' onSubmit={handleSubmit(handleSubmitData)}>
+                <Input
                     name="nome"
-                    type="text" 
-                    placeholder="Name" 
+                    type="text"
+                    placeholder="Nome"
                     maxLength={30}
+                    {...register("nome")}
                 />
-                {errors.nome && <span className='span1'>{errors.nome.message}</span>}
-
-                <Input 
-                    {...register('email', { pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/ })} 
-                    type="email" 
-                    placeholder='E-mail' 
+                {errors.nome && <p className="errorMessage">{errors.nome.message}</p>}
+                <Input
+                    type="email"
+                    placeholder='E-mail'
                     maxLength={27}
                     name="email"
+                    {...register("email")}
                 />
-                {errors.email && <span className='span1'>{errors.email.message}</span>}
-
-                <Input 
-                    {...register('pass', { pattern: /^.{8,}$/ })}
-                    type="password" 
-                    placeholder='Password' 
+                {errors.email && <p className="errorMessage">{errors.email.message}</p>}
+                <Input
+                    type="text"
+                    placeholder='Conselho'
                     maxLength={10}
-                    name="pass"
-                    onKeyDown={validarNumeros}
+                    name="Conselho"
+                    {...register("Conselho")}
                 />
-                {errors.pass && <span className='span1'>{errors.pass.message}</span>}
-
-                <Input 
-                    {...register('ConfirmaSenha', { pattern: /^[0-9]{8}$/ })} 
-                    name="ConfirmaSenha"
-                    type="password" 
-                    placeholder='Password Confirm' 
+                {errors.Conselho && <p className="errorMessage">{errors.Conselho.message}</p>}
+                <Input
+                    type="text"
+                    placeholder='Contato'
                     maxLength={10}
+                    name="Contato"
                     onKeyDown={validarNumeros}
+                    {...register("Contato")}
                 />
-                {errors.ConfirmaSenha && <span className='span1'>{errors.ConfirmaSenha.message}</span>}
+                {errors.Contato && <p className="errorMessage">{errors.Contato.message}</p>}
+                <Input
+                    type="text"
+                    placeholder='Especialidade'
+                    maxLength={10}
+                    name="Especialidade"
+                    {...register("Especialidade")}
+                />
+                {errors.Especialidade && <p className="errorMessage">{errors.Especialidade.message}</p>}
+                
+                <div className='password-input'>
+                    <Input
+                        type={showPassword ? 'text' : 'password'} // Muda o tipo com base no estado
+                        placeholder='Senha'
+                        maxLength={10}
+                        name="pass"
+                        {...register("pass")}
+                    />
+                    <button 
+                        type="button" 
+                        onClick={() => setShowPassword(!showPassword)} // Alterna a visibilidade
+                        className='show-password-button'
+                    >
+                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                    </button>
+                </div>
+                {errors.pass && <p className="errorMessage">{errors.pass.message}</p>}
 
-                <Button type="submit" className="btn" nome="CADASTRAR"/>
+                <div className='password-input'>
+                    <Input
+                        name="ConfirmaSenha"
+                        type={showConfirmPassword ? 'text' : 'password'} // Muda o tipo com base no estado
+                        placeholder='Confirmação de Senha'
+                        maxLength={10}
+                        {...register("ConfirmaSenha")}
+                    />
+                    <button 
+                        type="button" 
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)} // Alterna a visibilidade
+                        className='show-password-button'
+                    >
+                        <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />
+                    </button>
+                </div>
+                {errors.ConfirmaSenha && <p className="errorMessage2">{errors.ConfirmaSenha.message}</p>}
+                
+                <Button type="submit" className="btn" nome="CADASTRAR" />
                 <Navbar />
             </form>
         </>
-    )
+    );
 }
 
-export default Cadastro
+export default Cadastro;

@@ -22,6 +22,21 @@ body {
   background-color: var(--color1);
 }
 
+.errorMessage2 {
+  color: red;
+  font-size: 10px;
+  margin-top: -10px;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 10px;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+
+
 main {
   width: 100vw;
   height: 100vh;
@@ -39,6 +54,20 @@ main {
   background-color: var(--color2);
   width: 300px;
   height: 430px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.308);
+  position: relative;
+}
+
+
+.divLogin2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color2);
+  width: 300px;
+  height: 530px;
   border-radius: 4px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.308);
   position: relative;
@@ -64,6 +93,21 @@ input {
   border-radius: 3px;
   font-weight: bold;
   margin-top: 10px;
+}
+
+.btn2 {
+  width: 120px;
+  height: 30px;
+  cursor: pointer;
+  background-color: var(--color3);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  margin-top: 10px;
+  position: absolute;
+  left: 80%;
+  bottom: 5%;
 }
 
 .btn:hover {
@@ -93,6 +137,24 @@ input {
   position: absolute;
   left: 15%;
   bottom: 5%;
+  z-index: 5;
+}
+
+.spanEsqueceuSenha {
+  color: white;
+  text-decoration: none ; 
+  font-weight: bold;
+  font-size: 12px;
+  cursor: pointer;
+  padding-bottom: 4px;
+  line-height: 2px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  position: absolute;
+  left: 22%;
+  bottom: -3%;
   z-index: 5;
 }
 
@@ -223,18 +285,33 @@ input {
 .nav2 {
   color: white;
   gap: 20px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: bold;
   width: 250px;
-  height: 60px;
+  height: 250px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--color5);
+}
+
+.divnavdashboard {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  width: 530px;
+  height: 250px;
+  background-color: var(--color1);
 }
 
 .nav2:hover {
   border: 1px solid white;
+}
+
+.logoutdashboard {
+  position: absolute;
+  left: 50%;
 }
 
 .imgDash {
@@ -246,6 +323,14 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.divCentro2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color5);
 }
 
 .btnLogout {
@@ -308,3 +393,19 @@ input {
   background-color: #384257 !important;
   border: 2px solid var(--color1);
 }
+
+.password-input {
+  position: relative;
+}
+
+.show-password-button {
+  position: absolute;
+  right: 10px;
+  top: 35%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color5); 
+}
+
