@@ -68,7 +68,7 @@ function Login({ updateUser }) {
       <div className='password-input'>
         <Input 
           {...register('pass')}
-          type={showPassword ? 'text' : 'password'} // Muda o tipo com base no estado
+          type={showPassword ? 'text' : 'password'} 
           placeholder='Senha' 
           maxLength={10}
           name="pass"
@@ -76,7 +76,7 @@ function Login({ updateUser }) {
         />
         <button 
           type="button" 
-          onClick={() => setShowPassword(!showPassword)} // Alterna a visibilidade
+          onClick={() => setShowPassword(!showPassword)} 
           className='show-password-button'
         >
           <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />

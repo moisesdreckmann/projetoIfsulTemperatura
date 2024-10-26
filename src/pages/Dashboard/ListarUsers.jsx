@@ -6,7 +6,7 @@ import userContext from "../../contexts/userContext.js";
 import '../../App.css';
 import usuario from '../../assets/usuario.webp'
 import Button from '../../components/Button.jsx';
-import { faList } from '@fortawesome/free-solid-svg-icons'; 
+import { faHospital } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function ListarUsers() {
@@ -34,7 +34,7 @@ function ListarUsers() {
             <div className="section1Dash">
                     <img src={usuario} alt="" width={100} height={100} className="imgDash"  />
                     <div className="user">{user}</div>
-                    <FontAwesomeIcon icon= {faList}/> Listar Leitos
+                    <FontAwesomeIcon icon={faHospital} /> Listar Leitos
                     <Logout/>
                 </div>
                 <div className="section2Dash">

@@ -8,6 +8,8 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { auth } from '../firebase';  
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import { db } from '../firebase';
+import { collection, addDoc } from 'firebase/firestore'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -34,15 +36,27 @@ function Cadastro() {
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     const handleSubmitData = async (data) => {
-        const { nome, email, pass } = data;
+        const { nome, email, pass, Conselho, Especialidade, Contato } = data;
+
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
             await sendEmailVerification(userCredential.user);
+
+
+            await addDoc(collection(db, 'funcionarios'), {
+                nome: nome.toLowerCase(),
+                email: email.toLowerCase(),
+                conselho: Conselho.toLowerCase(),
+                contato: Contato, 
+                especialidade: Especialidade.toLowerCase(),
+            });
+
             reset();
             navigate('/projetoIfsulTemperatura/');
             alert("Usuário cadastrado com sucesso! Verifique seu email.");
         } catch (error) {
             alert("O email já está em uso ou houve um erro.");
+            console.error(error); 
         }
     };
 
@@ -93,7 +107,7 @@ function Cadastro() {
                 <Input
                     type="text"
                     placeholder='Especialidade'
-                    maxLength={10}
+                    maxLength={15}
                     name="Especialidade"
                     {...register("Especialidade")}
                 />
@@ -101,7 +115,7 @@ function Cadastro() {
                 
                 <div className='password-input'>
                     <Input
-                        type={showPassword ? 'text' : 'password'} // Muda o tipo com base no estado
+                        type={showPassword ? 'text' : 'password'} 
                         placeholder='Senha'
                         maxLength={10}
                         name="pass"
@@ -109,7 +123,7 @@ function Cadastro() {
                     />
                     <button 
                         type="button" 
-                        onClick={() => setShowPassword(!showPassword)} // Alterna a visibilidade
+                        onClick={() => setShowPassword(!showPassword)} 
                         className='show-password-button'
                     >
                         <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
@@ -120,14 +134,14 @@ function Cadastro() {
                 <div className='password-input'>
                     <Input
                         name="ConfirmaSenha"
-                        type={showConfirmPassword ? 'text' : 'password'} // Muda o tipo com base no estado
+                        type={showConfirmPassword ? 'text' : 'password'} 
                         placeholder='Confirmação de Senha'
                         maxLength={10}
                         {...register("ConfirmaSenha")}
                     />
                     <button 
                         type="button" 
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)} // Alterna a visibilidade
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)} 
                         className='show-password-button'
                     >
                         <FontAwesomeIcon icon={showConfirmPassword ? faEyeSlash : faEye} />

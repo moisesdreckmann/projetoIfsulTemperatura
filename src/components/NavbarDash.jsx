@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons'; 
-import { faList } from '@fortawesome/free-solid-svg-icons'; 
+import { faBed } from '@fortawesome/free-solid-svg-icons';
+import { faHospital } from '@fortawesome/free-solid-svg-icons';
 
 function NavbarDash() {
     return(
         <>
             <div className='divnavdashboard'>
             <Link to="/projetoIfsulTemperatura/criarUsers" className='nav2'>
-                <FontAwesomeIcon icon={faUser} /> Criar Leitos
+                <FontAwesomeIcon icon={faBed} /> Criar Leitos
             </Link>
-            <Link to="/projetoIfsulTemperatura/listarUsers" className='nav2'><FontAwesomeIcon icon= {faList}/> Listar Leitos</Link>
+            <Link to="/projetoIfsulTemperatura/listarUsers" className='nav2'><FontAwesomeIcon icon={faHospital} /> Listar Leitos</Link>
             </div>
 
         </>
